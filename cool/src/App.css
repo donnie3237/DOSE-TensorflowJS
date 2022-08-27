@@ -1,0 +1,21 @@
+.App {
+  text-align: center;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+
+.came{
+  width: 100vw;
+  height: 80vh;
+  background-color: aqua;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  object-fit: cover;
+}
+
+
+
+
+
