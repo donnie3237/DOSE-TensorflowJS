@@ -1,4 +1,4 @@
-<h1>Machine learning javascript</h1>
+<h1>Machine learning javascript(ปัญญาประดิษฐิ์)</h1>
 <h4>All mt my tfjs project</h4>
 <div>
 <img src="https://github.com/devicons/devicon/blob/v2.15.1/icons/react/react-original.svg" alt="ReactJS" width="45" height="45"/>
