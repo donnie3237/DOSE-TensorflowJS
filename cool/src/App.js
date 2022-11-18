@@ -1,17 +1,17 @@
 import React,{useRef} from 'react'
 import * as tf from "@tensorflow/tfjs"
-import * as facemesh from "@tensorflow-models/facemesh"
 import './App.css';
 import Webcam from "react-webcam"
 import Header from './components/header/Header';
 import Foot from './components/header/footer/Foot';
+const facemesh = require('@tensorflow-models/facemesh')
 
 function App() {
   const wcRef =useRef(null);
   const cvRef =useRef(null);
 
   const runMesh = async() =>{
-    const net =await facemesh.load({
+    const net = await facemesh.load({
        inputResolution:{width:640,height:480},scale:0.8,
     })
     setInterval(()=>{
@@ -19,7 +19,9 @@ function App() {
     },100)
   }
   const detect =async(net) =>{
-    if(typeof wcRef.current !=="undefined" && wcRef.current !== null && wcRef.current.video.readyState === 4)
+    if(typeof wcRef.current !=="undefined" && wcRef.current !== null &&
+     wcRef.current.video.readyState === 4
+    )
     {
       const video = wcRef.current.video;
       const vheight = wcRef.current.video.videoHeight;
@@ -28,10 +30,12 @@ function App() {
       wcRef.current.video.width=vwidth;
       cvRef.current.video.height=vheight;
       cvRef.current.video.width=vwidth;
-      const face = await net.estimateFaces(video)
+      var face = await net.estimateFaces(video)
       console.log(face)
     }
     runMesh();
+    detect();
+
   }
   return (
     <div className="App">
@@ -41,14 +45,16 @@ function App() {
                 style={{
                   height:"60vh",
                   width:"100%",
-                  position:"absolute"
+                  position:"absolute",
+                  zIndex:"9"
                 }}
          />
         <canvas ref={cvRef} 
                 style={{
                   height:"480",
-                  width:"640",
-                  position:"absolute"
+                  width:"800",
+                  position:"absolute",
+                  zIndex:"9"
                 }}
          />
          </div>
